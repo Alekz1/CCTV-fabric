@@ -7,6 +7,7 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
+	maven { url 'https://jitpack.io' }
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
@@ -19,9 +20,19 @@ dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
+	modImplementation ('com.github.iPortalTeam.ImmersivePortalsMod:imm_ptl_core:v2.6.3-mc1.19.4'){
+		exclude(group: "net.fabricmc.fabric-api")
+		transitive(false)
+	}
+	modImplementation ('com.github.iPortalTeam.ImmersivePortalsMod:q_misc_util:v2.6.3-mc1.19.4'){
+		exclude(group: "net.fabricmc.fabric-api")
+		transitive(false)
+	}
+	api("com.github.LlamaLad7:MixinExtras:0.2.0-beta.4")
+	annotationProcessor("com.github.LlamaLad7:MixinExtras:0.2.0-beta.4")
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
 
 	// Uncomment the following line to enable the deprecated Fabric API modules. 
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
