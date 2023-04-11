@@ -20,15 +20,16 @@ public class TabletItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if(!world.isClient() && hand == Hand.MAIN_HAND){
-            createPortal((ServerWorld) world);
+            createPortal((ServerWorld) world, user);
+
         }
         return super.use(world, user, hand);
     }
-    public static void createPortal(ServerWorld world){
+    public static void createPortal(ServerWorld world, PlayerEntity user){
         Portal portal = Portal.entityType.create(world);
-        portal.setOriginPos(new Vec3d(0, 10, 0));
+        portal.setOriginPos(user.getPos());
         portal.setDestinationDimension(World.NETHER);
-        portal.setDestination(new Vec3d(100, 70, 100));
+        portal.setDestination(new Vec3d(1000, 70, 1000));
         portal.setOrientationAndSize(
                 new Vec3d(1, 0, 0), // axisW
                 new Vec3d(0, 1, 0), // axisH

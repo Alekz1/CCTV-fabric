@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.lechkata.cctv.CCTV;
+import net.lechkata.cctv.block.custom.CameraBlock;
 import net.lechkata.cctv.item.ModItemGroup;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
@@ -17,7 +18,8 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
     public static final Block CAMERA = registerBlock("camera_block",
-            new Block(FabricBlockSettings.of(Material.METAL).strength(0.5f)), ModItemGroup.CCTV_TAB);
+            new CameraBlock(FabricBlockSettings.of(Material.METAL).strength(0.5f)), ModItemGroup.CCTV_TAB);
+
     private static Block registerBlock(String name, Block block, ItemGroup group){
         registerBlockItem(name, block, group);
         return Registry.register(Registries.BLOCK, new Identifier(CCTV.MOD_ID, name), block);
