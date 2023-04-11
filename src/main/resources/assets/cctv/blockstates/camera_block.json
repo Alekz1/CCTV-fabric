@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "cctv:block/camera_block"
+    }
+  }
+}
